@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo:6
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - mongo
+      - redis
+  ai:
+    build: ./ai
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    ports:
+      - "5174:5173"
+    environment:
+      - VITE_API_URL=http://localhost:5000
+      - VITE_WS_URL=http://localhost:5000
+      - VITE_AI_URL=http://localhost:8001
+    depends_on:
+      - backend
+volumes:
+  mongo_data:
