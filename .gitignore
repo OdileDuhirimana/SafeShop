@@ -30,6 +30,7 @@ backend/.env.local
 ai/.venv/
 ai/venv/
 ai/__pycache__/
+**/__pycache__/
 ai/.pytest_cache/
 ai/.mypy_cache/
 ai/.env

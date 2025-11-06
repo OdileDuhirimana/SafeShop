@@ -22,6 +22,14 @@ import metricsRouter from './routes/metrics.js';
 import discountsRouter from './routes/discounts.js';
 import referralsRouter from './routes/referrals.js';
 import adminRouter from './routes/admin.js';
+import alertsRouter from './routes/alerts.js';
+import addressesRouter from './routes/addresses.js';
+import paymentMethodsRouter from './routes/paymentMethods.js';
+import notificationsRouter from './routes/notifications.js';
+import searchRouter from './routes/search.js';
+import recentlyViewedRouter from './routes/recentlyViewed.js';
+import questionsRouter from './routes/questions.js';
+import returnsRouter from './routes/returns.js';
 import { seedProducts } from './util/seed.js';
 
 dotenv.config();
@@ -105,6 +113,14 @@ app.use('/api/metrics', metricsRouter);
 app.use('/api/discounts', discountsRouter);
 app.use('/api/referrals', referralsRouter);
 app.use('/api/admin', adminRouter);
+app.use('/api/alerts', alertsRouter);
+app.use('/api/addresses', addressesRouter);
+app.use('/api/payment-methods', paymentMethodsRouter);
+app.use('/api/notifications', notificationsRouter);
+app.use('/api/search', searchRouter);
+app.use('/api/recently-viewed', recentlyViewedRouter);
+app.use('/api/questions', questionsRouter);
+app.use('/api/returns', returnsRouter);
 
 // WebSocket - simple chat placeholder
 io.on('connection', (socket) => {
