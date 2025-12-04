@@ -2,6 +2,9 @@
 
 Full-stack e-commerce demo with React, Node/Express, MongoDB, Redis, and a Python FastAPI AI service.
 
+Deployment reference:
+- `docs/deployment.md` (Render backend + AI, Vercel frontend)
+
 ## Portfolio Features
 - AI Shopping Concierge: goal + budget based curated picks (`/concierge`, `POST /api/products/concierge`)
 - Price Watch Alerts: create/list/trigger alerts when prices drop (`/alerts`, `/api/alerts`)

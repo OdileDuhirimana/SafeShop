@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: safeshop-api
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGO_URI
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: API_PUBLIC_URL
+        sync: false
+      - key: AI_URL
+        sync: false
+      - key: AES_KEY
+        sync: false
+      - key: STRIPE_SECRET
+        sync: false
+      - key: TAX_RATE
+        value: "0.1"
+      - key: BASE_CURRENCY
+        value: USD
+
+  - type: web
+    name: safeshop-ai
+    runtime: python
+    rootDir: ai
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: CORS_ALLOW_ORIGINS
+        sync: false
