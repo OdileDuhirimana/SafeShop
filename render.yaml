@@ -17,9 +17,9 @@ services:
       - key: CLIENT_URL
         sync: false
       - key: API_PUBLIC_URL
-        sync: false
+        value: https://safeshop-api.onrender.com
       - key: AI_URL
-        sync: false
+        value: https://safeshop-ai.onrender.com
       - key: AES_KEY
         sync: false
       - key: STRIPE_SECRET
